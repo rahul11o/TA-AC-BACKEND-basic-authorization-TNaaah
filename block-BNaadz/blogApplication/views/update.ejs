@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/header.css" />
+    <link rel="stylesheet" href="/stylesheets/articleForm.css" />
+    <title>Create Article</title>
+  </head>
+  <body>
+    <%- include("partials/header")-%>
+    <div class="container">
+      <form
+        id="articleForm"
+        action="/articles/<%=article.slug%>/update"
+        method="POST"
+      >
+        <input
+          type="text"
+          id="title"
+          name="title"
+          placeholder="Title"
+          required
+          value="<%=article.title%>"
+        />
+        <textarea
+          id="description"
+          name="description"
+          placeholder="Description"
+          required
+        >
+        <%=article.description%></textarea
+        >
+
+        
+        <!-- <input type="text" id="slug" name="slug" placeholder="Slug" required /> -->
+
+        <input type="submit" value="Update Article" />
+      </form>
+    </div>
+    <%- include("partials/footer")-%>
+  </body>
+</html>

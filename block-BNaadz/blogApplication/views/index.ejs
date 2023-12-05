@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="/stylesheets/header.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <%- include('partials/header') -%>
+    <div class="index">
+      <h1>Namste Vlogs</h1>
+      <p>Welcome to Namste Vlogs</p>
+    </div>
+    <% if (info) { %>
+    <div class="success">
+      <p><%= info %></p>
+    </div>
+    <% } %>
+
+    <div class="go-to-articles-cont">
+      <div class="go-to-articles">
+        <a href="/articles">Go to Articles</a>
+      </div>
+      <% if(user){ %>
+        <div class="go-to-articles">
+          <a href="/articles/myarticles">My Articles</a>
+        </div>
+        <div class="go-to-articles">
+          <a href="/articles/create">Add Articles</a>
+        </div>
+     <% }%>
+      
+    </div>
+    
+
+    <%- include("partials/footer")-%>
+  </body>
+</html>

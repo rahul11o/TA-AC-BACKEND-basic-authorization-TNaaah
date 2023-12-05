@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Article Page</title>
+    <link rel="stylesheet" href="/stylesheets/header.css" />
+    <link rel="stylesheet" href="/stylesheets/articleList.css" />
+  </head>
+  <body>
+    <%-include("partials/header")-%>
+    <div class="container">
+      <% article.forEach((art)=>{%>
+      <div class="article-card">
+        <h2><%=art.title%></h2>
+        <p><%=art.description%></p>
+        <p class="author"><%=art.author.firstName%></p>
+        <a href="/articles/<%=art.slug%>/details" class="show-more-btn">Show More</a>
+      </div>
+      <%})%>
+      <a href="/" class="back-btn">⬅️</a>
+    </div>
+  </body>
+  <%-include("partials/footer")-%>
+</html>
