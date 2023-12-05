@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Article Detail</title>
+    <link rel="stylesheet" href="/stylesheets/header.css" />
+    <link rel="stylesheet" href="/stylesheets/article.css" />
+  </head>
+  <body>
+    <%-include("partials/header")-%>
+    <div class="article-detail">
+      <h2><%=article.title%></h2>
+      <p><%=article.description%></p>
+      <p class="author"><%=article.author.firstName%></p>
+      <% if(err){%>
+        <p style="color: red; font-weight: 600;"><%=err%></p>
+      <%}%>
+      <div class="actions">
+        <a href="/articles/<%=article.slug%>/likes" class="action-btn like-btn">
+          👍 <span><%=article.likes%></span></a
+        >
+        <a
+          href="/articles/<%=article.slug%>/dislikes"
+          class="action-btn dislike-btn"
+        >
+          👎 <span><%=article.dislikes%></span></a
+        >
+        <a
+          href="/articles/<%=article.slug%>/delete"
+          class="action-btn delete-btn"
+          >Delete</a
+        >
+        <a
+          href="/articles/<%=article.slug%>/update"
+          class="action-btn update-btn"
+          >Update</a
+        >
+      </div>
+
+      <form
+        class="comment-form"
+        action="/comments/<%=article._id%>/"
+        method="POST"
+      >
+        <textarea
+          id="comment"
+          name="content"
+          rows="6"
+          placeholder="Add comment"
+        ></textarea>
+        <button type="submit" class="submit-btn">Add Comment</button>
+      </form>
+
+      <!-- Display added comments here -->
+      <% article.comments.forEach((comment)=>{%>
+      <div class="comment">
+        <% if(error){%>
+          <p style="color: red; font-weight: 600;"><%=error%></p>
+        <%}%>
+        <p><%=comment.content%></p>
+        <div class="comment-actions">
+          <a href="/comments/<%=comment._id%>/likes" class="action-btn like-btn"
+            >👍 <span><%=comment.likes%></span></a
+          >
+          <a
+            href="/comments/<%=comment._id%>/dislikes"
+            class="action-btn dislike-btn"
+            >👎 <span><%=comment.dislikes%></span></a
+          >
+          <a
+            href="/comments/<%=comment._id%>/delete"
+            class="action-btn delete-btn"
+            >Delete</a
+          >
+          <a
+            href="/comments/<%=comment._id%>/update"
+            class="action-btn update-btn"
+            >Update</a
+          >
+        </div>
+      </div>
+      <%})%>
+      <a href="/articles/" class="back-btn">⬅️</a>
+    </div>
+    <%-include("partials/footer")-%>
+  </body>
+</html>

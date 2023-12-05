@@ -1,0 +1,13 @@
+<header>
+  <a href="/" class="logo">Home</a>
+  <div class="button-container">
+    <% if(!user) { %>
+      <a href="/users/register">Register</a>
+      <a href="/users/login">Log In</a>
+    <%} else{%>
+      <a href="#"><%=user.firstName%> <span class="person">👤</span></a>
+      <a href="/users/logout">Log Out</a>
+    <%}%>
+
+  </div>
+</header>
